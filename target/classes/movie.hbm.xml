@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 4, 2020, 12:33:47 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.me.bookmymovie.pojo.Movie" table="Movie">
+        <id name="movieID" type="long">
+            <column name="MOVIE_ID" />
+            <generator class="native" />
+        </id>
+        <property name="relDate" type="java.util.Date">
+            <column name="REL_DATE" />
+        </property>
+        <property name="movieLength" type="java.lang.String">
+            <column name="MOVIE_LENGTH" />
+        </property>
+        <property name="movieTitle" type="java.lang.String">
+            <column name="MOVIE_TITLE" />
+        </property>
+        <property name="movieSynopsis" type="java.lang.String">
+            <column name="MOVIE_SYNOPSIS" />
+        </property>
+        <property name="movieRating" type="double">
+            <column name="MOVIE_RATING" />
+        </property>
+        <set name="language" table="Movie_Language" inverse="false" lazy="true">
+            <key>
+                <column name="MOVIE_ID" />
+            </key>
+            <element type="java.lang.String" column="LANGUAGE"/>
+        </set>
+        <set name="category" table="Movie_Category" inverse="false" lazy="true">
+            <key>
+                <column name="MOVIE_ID" />
+            </key>
+            <element type="java.lang.String">
+                <column name="CATEGORY" />
+            </element>
+        </set>
+        <!-- <list name="cast" inverse="false" table="Movie_Cast" lazy="true">
+            <key>
+                <column name="MOVIE_ID" />
+            </key>
+            <list-index column="CAST_ID"></list-index>
+            <element type="java.lang.String">
+                <column name="CAST" />
+            </element>
+        </list> -->
+    </class>
+</hibernate-mapping>
